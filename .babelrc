@@ -1,0 +1,32 @@
+{
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    //"transform-remove-console",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-regenerator",
+    [
+      "@babel/plugin-proposal-pipeline-operator",
+      {
+        "proposal": "minimal"
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": "./src",
+        "alias": {
+          "@server": "./src/server",
+          "@wrapper": "./src/wrapper",
+          "@controllers": "./src/controllers",
+          "@business": "./src/business",
+          "@apis": "./src/apis",
+          "@models": "./src/database/models",
+          "@queries": "./src/database/queries",
+          "@entities": "./src/database/entities"
+        }
+      }
+    ]
+  ]
+}
