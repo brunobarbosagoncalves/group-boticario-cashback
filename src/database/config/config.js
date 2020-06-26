@@ -1,10 +1,21 @@
+require("../../services/environment")
+
+const {
+  DATABASE_NAME,
+  DATABASE_USERNAME,
+  DATABASE_PASSWORD,
+  DATABASE_HOST,
+  DATABASE_DIALECT,
+  DATABASE_OPERATORS_ALIASE
+} = process.env
+
 module.exports = {
-  username: "admin",
-  password: "o2sX2TL2rgBx4l2x2ugt",
-  database: "groupboticariords",
-  host: "groupboticariords.ccvr4qdxni1k.us-east-1.rds.amazonaws.com",
-  dialect: "mysql",
-  operatorsAliases: "false",
+  username: DATABASE_USERNAME,
+  password: DATABASE_PASSWORD,
+  database: DATABASE_NAME,
+  host: DATABASE_HOST,
+  dialect: DATABASE_DIALECT,
+  operatorsAliases: DATABASE_OPERATORS_ALIASE,
   dialectOptions: {
     dateStrings: true,
     typeCast: true
