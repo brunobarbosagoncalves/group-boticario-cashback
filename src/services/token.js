@@ -16,7 +16,9 @@ export const encryptToken = async data =>
 export const decryptToken = async data =>
   new Promise((res, rej) => {
     try {
-      return jwt.verify(data, TOKEN_KEY, (err, token) => (err ? rej(err) : res(token)))
+      return jwt.verify(data.split(" ")[1], TOKEN_KEY, (err, token) =>
+        err ? rej(err) : res(token)
+      )
     } catch (error) {
       return rej(false)
     }

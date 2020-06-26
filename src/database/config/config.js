@@ -1,14 +1,12 @@
 module.exports = {
-  username: "proadi",
-  password: "0GnudU26BB82yWl",
-  database: "agendamento-telemedicina",
-  host: "agendamento-telemedicina.cphzbmr9mwfr.us-west-2.rds.amazonaws.com",
+  username: "admin",
+  password: "o2sX2TL2rgBx4l2x2ugt",
+  database: "groupboticariords",
+  host: "groupboticariords.ccvr4qdxni1k.us-east-1.rds.amazonaws.com",
   dialect: "mysql",
   operatorsAliases: "false",
   dialectOptions: {
     dateStrings: true,
-    typeCast: true,
-    timezone: "America/Sao_Paulo"
-  },
-  timezone: "America/Sao_Paulo"
+    typeCast: true
+  }
 }

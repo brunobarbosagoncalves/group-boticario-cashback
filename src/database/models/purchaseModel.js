@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) =>
         primaryKey: true
       },
       date: {
-        type: DataTypes.DATETIME
+        type: DataTypes.DATE
       },
       description: {
         type: DataTypes.STRING
@@ -25,6 +25,10 @@ export default (sequelize, DataTypes) =>
         defaultValue: "00.00",
         allowNull: false
       },
+      credits: {
+        type: DataTypes.DECIMAL(10, 2),
+        defaultValue: 0.0
+      },
       status: {
         type: DataTypes.ENUM,
         values: ["IN_VALIDATION", "OK"],
@@ -34,6 +38,24 @@ export default (sequelize, DataTypes) =>
       isDeleted: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "User",
+          referencesKey: "id",
+          onDelete: "CASCADE"
+        },
+        createdAt: {
+          allowNull: false,
+          defaultValue: sequelize.fn("now"),
+          type: DataTypes.DATE
+        },
+        updatedAt: {
+          allowNull: false,
+          defaultValue: sequelize.fn("now"),
+          type: DataTypes.DATE
+        }
       }
     },
 

@@ -1,5 +1,8 @@
-import { productModel } from "database/models"
+import { Op } from "sequelize"
+import db from "database/models"
 import response from "services/response"
+
+const { productModel } = db
 
 class productBusiness {
   async findProduct({ id, pagination }) {
@@ -10,7 +13,14 @@ class productBusiness {
   }
   async findProductByConditions({ conditions, pagination }) {
     return productModel
-      .findAll({ ...pagination, where: conditions })
+      .findAll({
+        ...pagination,
+        where: {
+          [Op.and]: [
+            Object.entries(conditions).map(item => ({ [item[0]]: { [Op.like]: `%${item[1]}%` } }))
+          ]
+        }
+      })
       .then(data => response.success(data))
       .catch(err => response.error(err))
   }
@@ -29,6 +39,13 @@ class productBusiness {
   async deleteProduct(id) {
     return productModel
       .update({ isDeleted: true }, { where: { id } })
+      .then(data => response.success(data))
+      .catch(err => response.error(err))
+  }
+  async findBetweenIdsProduct(ids) {
+    const idList = ids.split(",") || []
+    return productModel
+      .findAll({ where: { id: { [Op.in]: idList } } })
       .then(data => response.success(data))
       .catch(err => response.error(err))
   }

@@ -27,9 +27,23 @@ export default (sequelize, DataTypes) =>
         type: DataTypes.STRING,
         allowNull: false
       },
+      credits: {
+        type: DataTypes.DECIMAL(10, 2),
+        defaultValue: 0.0
+      },
       isDeleted: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+      },
+      createdAt: {
+        allowNull: false,
+        defaultValue: sequelize.fn("now"),
+        type: DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        defaultValue: sequelize.fn("now"),
+        type: DataTypes.DATE
       }
     },
 

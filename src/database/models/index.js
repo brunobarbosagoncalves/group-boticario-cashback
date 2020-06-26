@@ -42,17 +42,18 @@ db.productModel = productModel(sequelize, DataTypes)
 db.itemModel = itemModel(sequelize, DataTypes)
 db.logModel = logModel(sequelize, DataTypes)
 
-//Relations
+/*Relations 1-1*/
+//product.id => item.productId
+db.productModel.hasOne(db.itemModel, { foreignKey: "productId" })
+db.itemModel.belongsTo(db.productModel, { foreignKey: "productId" })
 
-//1-1//
-db.itemModel.hasOne(db.productModel, { foreignKey: "id", targetKey: "itemId" })
-db.productModel.belongsTo(db.itemModel, { foreignKey: "itemId", targetKey: "id" })
+/*Relations 1-0.N*/
+//user.id => item.userId
+db.userModel.hasMany(db.purchaseModel, { foreignKey: "userId" })
+db.purchaseModel.belongsTo(db.userModel, { foreignKey: "userId" })
 
-//1-0.N//
-db.userModel.hasMany(db.purchaseModel, { foreignKey: "id", targetKey: "userId" })
-db.purchaseModel.belongsTo(db.userModel, { foreignKey: "userId", targetKey: "id" })
-
-db.purchaseModel.hasMany(db.itemModel, { foreignKey: "id", targetKey: "purchaseId" })
-db.itemModel.belongsTo(db.purchaseModel, { foreignKey: "purchaseId", targetKey: "id" })
+//purchase.id => item.purchaseId
+db.purchaseModel.hasMany(db.itemModel, { foreignKey: "purchaseId" })
+db.itemModel.belongsTo(db.purchaseModel, { foreignKey: "purchaseId" })
 
 export default db

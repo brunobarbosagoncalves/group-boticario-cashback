@@ -1,1 +1,1 @@
-export default { freezeTableName: true, timestamps: false }
+export default { freezeTableName: true, timestamps: true }

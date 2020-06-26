@@ -8,20 +8,24 @@ module.exports = {
         primaryKey: true
       },
       date: {
-        type: Sequelize.DataTypes.DATETIME
+        type: Sequelize.DataTypes.DATE
       },
       description: {
         type: Sequelize.DataTypes.STRING
       },
       value: {
         type: Sequelize.DataTypes.DECIMAL(10, 2),
-        defaultValue: "00.00",
+        defaultValue: 0.0,
         allowNull: false
       },
       cashback: {
         type: Sequelize.DataTypes.DECIMAL(10, 2),
-        defaultValue: "00.00",
+        defaultValue: 0.0,
         allowNull: false
+      },
+      credits: {
+        type: Sequelize.DataTypes.DECIMAL(10, 2),
+        defaultValue: 0.0
       },
       status: {
         type: Sequelize.DataTypes.ENUM,
@@ -32,6 +36,24 @@ module.exports = {
       isDeleted: {
         type: Sequelize.DataTypes.BOOLEAN,
         defaultValue: false
+      },
+      userId: {
+        type: Sequelize.DataTypes.INTEGER,
+        references: {
+          model: "User",
+          referencesKey: "id",
+          onDelete: "CASCADE"
+        }
+      },
+      createdAt: {
+        allowNull: false,
+        defaultValue: Sequelize.fn("now"),
+        type: Sequelize.DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        defaultValue: Sequelize.fn("now"),
+        type: Sequelize.DataTypes.DATE
       }
     })
   },

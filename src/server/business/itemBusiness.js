@@ -1,5 +1,9 @@
-import { itemModel } from "database/models"
+import { Op } from "sequelize"
+
+import db from "database/models"
 import response from "services/response"
+
+const { itemModel } = db
 
 class itemBusiness {
   async findItem({ id, pagination }) {
@@ -10,7 +14,14 @@ class itemBusiness {
   }
   async findItemByConditions({ conditions, pagination }) {
     return itemModel
-      .findAll({ ...pagination, where: conditions })
+      .findAll({
+        ...pagination,
+        where: {
+          [Op.and]: [
+            Object.entries(conditions).map(item => ({ [item[0]]: { [Op.like]: `%${item[1]}%` } }))
+          ]
+        }
+      })
       .then(data => response.success(data))
       .catch(err => response.error(err))
   }

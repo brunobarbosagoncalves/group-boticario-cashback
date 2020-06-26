@@ -28,6 +28,16 @@ module.exports = {
       isDeleted: {
         type: Sequelize.DataTypes.BOOLEAN,
         defaultValue: false
+      },
+      createdAt: {
+        allowNull: false,
+        defaultValue: Sequelize.fn("now"),
+        type: Sequelize.DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        defaultValue: Sequelize.fn("now"),
+        type: Sequelize.DataTypes.DATE
       }
     })
   },

@@ -2,21 +2,38 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable("Item", {
       id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
       },
-      userId: {
-        type: DataTypes.INTEGER,
+      quantity: {
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
+      },
+      value: {
+        type: Sequelize.DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+        defaultValue: 0.0
+      },
+      valueUnit: {
+        type: Sequelize.DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+        defaultValue: 0.0
+      },
+      purchaseId: {
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: false,
         references: {
-          model: "Item",
+          model: "Purchase",
           referencesKey: "id",
           onDelete: "CASCADE"
         }
       },
       productId: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: false,
         references: {
           model: "Product",
           referencesKey: "id",
@@ -24,8 +41,18 @@ module.exports = {
         }
       },
       isDeleted: {
-        type: DataTypes.BOOLEAN,
+        type: Sequelize.DataTypes.BOOLEAN,
         defaultValue: false
+      },
+      createdAt: {
+        allowNull: false,
+        defaultValue: Sequelize.fn("now"),
+        type: Sequelize.DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        defaultValue: Sequelize.fn("now"),
+        type: Sequelize.DataTypes.DATE
       }
     })
   },

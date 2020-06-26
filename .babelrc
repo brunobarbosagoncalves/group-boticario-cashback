@@ -15,17 +15,17 @@
     [
       "module-resolver",
       {
-        "root": "./src",
-        "alias": {
-          "@server": "./src/server",
-          "@wrapper": "./src/wrapper",
-          "@controllers": "./src/controllers",
-          "@business": "./src/business",
-          "@apis": "./src/apis",
-          "@models": "./src/database/models",
-          "@queries": "./src/database/queries",
-          "@entities": "./src/database/entities"
-        }
+        "root": "./src"
+        // "alias": {
+        //   "server": "./src/server",
+        //   "wrapper": "./src/wrapper",
+        //   "controllers": "./src/controllers",
+        //   "business": "./src/business",
+        //   "apis": "./src/apis",
+        //   "models": "./src/database/models",
+        //   "queries": "./src/database/queries",
+        //   "entities": "./src/database/entities"
+        // }
       }
     ]
   ]

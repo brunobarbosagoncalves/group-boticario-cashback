@@ -23,9 +23,23 @@ module.exports = {
         type: Sequelize.DataTypes.STRING,
         allowNull: false
       },
+      credits: {
+        type: Sequelize.DataTypes.DECIMAL(10, 2),
+        defaultValue: 0.0
+      },
       isDeleted: {
         type: Sequelize.DataTypes.BOOLEAN,
         defaultValue: false
+      },
+      createdAt: {
+        allowNull: false,
+        defaultValue: Sequelize.fn("now"),
+        type: Sequelize.DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        defaultValue: Sequelize.fn("now"),
+        type: Sequelize.DataTypes.DATE
       }
     })
   },

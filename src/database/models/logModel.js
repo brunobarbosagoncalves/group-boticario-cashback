@@ -29,6 +29,16 @@ export default (sequelize, DataTypes) =>
       },
       response: {
         type: DataTypes.TEXT
+      },
+      createdAt: {
+        allowNull: false,
+        defaultValue: sequelize.fn("now"),
+        type: DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        defaultValue: sequelize.fn("now"),
+        type: DataTypes.DATE
       }
     },
 

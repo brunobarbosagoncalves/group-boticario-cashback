@@ -14,9 +14,11 @@
     }
   },
   "scripts": {
-    "db-run-migration-dev": "yarn cross-env NODE_ENV=development sequelize --options-path=.sequelizerc.js db:migrate",
+    "db-run-migration": "yarn cross-env NODE_ENV=development sequelize --options-path=.sequelizerc.js db:migrate",
     "db-run-migration-undo-dev": "yarn cross-env NODE_ENV=development sequelize --options-path=.sequelizerc.js db:migrate:undo",
-    "db-run-seeders-dev": "yarn cross-env NODE_ENV=development sequelize --options-path=.sequelizerc.js db:seed:all",
+    "db-run-seeders": "yarn cross-env NODE_ENV=development sequelize --options-path=.sequelizerc.js db:seed:all",
+    "db-run-seeders-undo": "yarn cross-env NODE_ENV=development sequelize --options-path=.sequelizerc.js db:seed:undo:all",
+    "db-run-migration-undo-all": "yarn cross-env NODE_ENV=development sequelize --options-path=.sequelizerc.js db:migrate:undo:all",
     "husky-precommit": "yarn run eslint",
     "husky-prepush": "",
     "install-libs-prod": "yarn install-libs-global-prod && yarn install-libs-local",
@@ -82,6 +84,6 @@
     "jest": "^25.1.0",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^6.0.0"
   }
 }
