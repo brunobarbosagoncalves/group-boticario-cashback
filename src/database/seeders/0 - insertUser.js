@@ -4,7 +4,7 @@ module.exports = {
     queryInterface.bulkInsert("User", [
       {
         name: "Bruno Barbosa",
-        email: "brunoti.ads@gmail.com",
+        email: "bruno@gmail.com",
         password: "d3a3bdb4e760f30c4d93a869b0f64af5a579a432c4ff6f81a49a1d25659bd349",
         document: "79334521082",
         credits: 0.0,

@@ -8,6 +8,23 @@ https://classic.yarnpkg.com/pt-BR/docs/install/#windows-stable
 
 yarn dev
 
+# resetando o banco
+
+yarn db-run-migration-undo-dev
+
+# instalando o banco
+
+yarn db-run-migration
+
+# inserindo data minima
+
+yarn db-run-seeders
+
+# usuarios após o inserção minima para login e token
+
+    -bruno@gmail.com   12345
+    -rafael@gmail.com   12345
+
 # documentação e api (SWAGGER)
 
 http://localhost:8181/v1/api/docs
